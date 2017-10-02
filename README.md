@@ -3,6 +3,6 @@ Repo for the Learning Machines class (http://www.patrickhebron.com/learning-mach
 
 ### Mini-projects:
 - [String Encoder](/string_encoder)
-- [K-means Algorithm]((/k-means)
+- [K-means Algorithm](/k-means)
 - [Perceptron](/perceptron)
 - [Multiple Layer Perceptron()
