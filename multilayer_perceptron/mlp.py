@@ -6,7 +6,7 @@
 import matplotlib.pyplot as plt
 from matplotlib.lines import Line2D
 import numpy as np
-
+import time
 # Activation function definitions:
 
 def sigmoid_fn(x):
@@ -114,7 +114,8 @@ class Mlp:
 				# Update visualizer:
 				vis.update( epoch, error, input[0], target, self.predict( input ) )
 		# Save final training visualization to image:
-		vis.saveImage( 'mlp_training_process.png' )
+		image_name = time.time()
+		vis.saveImage( str(time.time()) + '.png' )
 
 # MLP Visualization Class:
 

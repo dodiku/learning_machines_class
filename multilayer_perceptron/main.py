@@ -39,19 +39,25 @@ y_validation = np.array(y_validation).reshape(1,-1)
 sample_size = 6
 output_size = 1
 example_cnt = x_training.shape[1]
-batch_size  = 10
+batch_size  = 4
 epoch_cnt   = 10000
-report_freq = 10
+report_freq = 40
 learn_rate  = 0.05
+hidden_layers = [8,12,8]
+
+# creating configurations list
+settings = []
+settings.append(sample_size)
+for n in hidden_layers:
+    settings.append(n)
+settings.append(output_size)
 
 # Construct MLP:
-mlp = Mlp( [ sample_size, 10, 10, 10, output_size ], "tanh" )
+mlp = Mlp( settings, "tanh" )
 
 # Construct dataset:
 training_inputs  = x_training
 training_outputs = y_training
-print ('training_inputs:', training_inputs.shape)
-print ('training_outputs:', training_outputs.shape)
 
 # Train MLP:
 mlp.train( training_inputs, training_outputs, learn_rate, epoch_cnt, batch_size, report_freq )
@@ -68,6 +74,10 @@ for p in predictions[0]:
 
 print ('🏁  {} percent error rate.\n   {} correct predictions out of {} validation samples.'.format(count/y_validation.shape[1]*100,count,y_validation.shape[1]))
 # print (( "Outputs: %s\nGuesses: %s\n" ) % ( training_outputs, training_guesses ))
-
+print ('\nSettings:')
+print ('batch_size:', batch_size)
+print ('epoch_cnt:', epoch_cnt)
+print ('learn_rate:', learn_rate)
+print ('hidden_layers:', hidden_layers)
 
 print ('\n\n🌆  yay!\n\n')
