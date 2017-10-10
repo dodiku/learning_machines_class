@@ -5,4 +5,4 @@ Repo for the Learning Machines class (http://www.patrickhebron.com/learning-mach
 - [String Encoder](/string_encoder)
 - [K-means Algorithm](/k-means)
 - [Perceptron](/perceptron)
-- [Multiple Layer Perceptron()
+- [Multiple Layer Perceptron](/multilayer_perceptron)
