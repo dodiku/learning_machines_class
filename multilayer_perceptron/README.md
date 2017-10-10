@@ -10,3 +10,5 @@
 |Number of hidden neurons|10|
 |Number of hidden layers|3|
 |Number of outputs|1|
+
+> Multilayer Perceptron code by [@Hebali](https://github.com/Hebali)
