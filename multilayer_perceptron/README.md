@@ -10,7 +10,7 @@
 |Dataset|[Car Evaluation Data Set](http://archive.ics.uci.edu/ml/datasets/Car+Evaluation)|
 |Number of inputs|6|
 |Number of hidden layers|9|
-|Number of hidden neurons|[6, 6, 6, 6, 6, 6, 6, 6, 6|
+|Number of hidden neurons|6, 6, 6, 6, 6, 6, 6, 6, 6|
 |Number of outputs|1|
 |Batch size|4|
 |Epochs|20,000|
