@@ -48,13 +48,18 @@ class StackedRbm():
         return
 
     def jobs_left(self):
-        print ('🔄  there are {} jobs left'.format(len(self.__jobs_queue)))
+        print ('🔄  there are {} jobs left\n'.format(len(self.__jobs_queue)))
         return
 
     def run_all_jobs(self):
         for obj in self.__jobs_queue:
             self.single_run(obj)
             self.jobs_left()
+            if len(self.__jobs_queue) > 0:
+                self.__jobs_queue = self.__jobs_queue[:-1]
+            else:
+                print ('\n❤️  all jobs ran successfully\n')
+
         return
 
     def single_run(self, obj):
@@ -126,12 +131,13 @@ class StackedRbm():
 jobs = StackedRbm()
 jobs.add_job(False, True, 784, 50, 10, 0.01, 1, 100, 1, [20, 10], 10, 0.05, 100)
 jobs.add_job(False, True, 784, 50, 10, 0.001, 1, 100, 1, [10, 10, 10], 10, 0.01, 100)
-jobs.add_job(True, False, 28, 200, 10, 0.05, 1, 200, 1, [20, 20, 20], 10, 0.15, 200)
-jobs.add_job(False, False, 28, 50, 100, 0.01, 1, 200, 1, [20, 10], 100, 0.02, 200)
+jobs.add_job(True, False, 784, 200, 10, 0.05, 1, 200, 1, [20, 20, 20], 10, 0.15, 200)
+jobs.add_job(False, False, 784, 50, 100, 0.01, 1, 200, 1, [20, 10], 100, 0.02, 200)
 jobs.add_job(True, True, 784, 200, 30, 0.02, 2, 150, 1, [12,12,12], 30, 0.01, 150)
 jobs.add_job(False, True, 784, 50, 20, 0.02, 1, 300, 1, [20, 10], 20, 0.05, 300)
-jobs.add_job(False, False, 28, 80, 30, 0.01, 1, 100, 1, [8,6,8], 30, 0.05, 100)
+jobs.add_job(False, False, 784, 80, 30, 0.01, 1, 100, 1, [8,6,8], 30, 0.05, 100)
 jobs.add_job(True, True, 784, 25, 100, 0.01, 2, 300, 1, [10,20, 100], 10, 0.05, 300)
 jobs.add_job(False, True, 784, 50, 10, 0.03, 1, 300, 1, [10,20, 10,20,10], 10, 0.05, 300)
-jobs.add_job(True, False, 1568, 50, 15, 0.02,3, 100, 1, [20, 10], 15, 0.01, 100)
+jobs.add_job(True, False, 784, 50, 15, 0.02,3, 100, 1, [20, 10], 15, 0.01, 100)
+jobs.add_job(True, False, 784, 50, 15, 0.02,3, 100, 1, [4,4,4,4,4,4], 15, 0.01, 100)
 jobs.run_all_jobs()
