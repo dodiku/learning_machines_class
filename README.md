@@ -6,3 +6,4 @@ Repo for the Learning Machines class (http://www.patrickhebron.com/learning-mach
 - [K-means Algorithm](/k-means)
 - [Perceptron](/perceptron)
 - [Multiple Layer Perceptron](/multilayer_perceptron)
+- [Restricted Boltzmann Machine](/restricted_boltzmann_machine)
