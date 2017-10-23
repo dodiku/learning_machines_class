@@ -10,6 +10,7 @@ Restricted Boltzmann Machine (RBM) implementation.
 import numpy as np
 import Activation
 from MnistReporter import *
+import time
 
 class Rbm:
 	def __init__(self, name, sizeV, sizeH, continuous = False):
@@ -24,7 +25,7 @@ class Rbm:
 	def getErrorRate(self, samples, reconstructions):
 		'''returns mean square error'''
 		return np.mean( np.square( samples - reconstructions ) )
-		
+
 	def trainEpoch(self, training_samples, learn_rate, cd_steps, batch_size):
 		error	   = 0.0
 		num_rows   = training_samples.shape[ 0 ]
@@ -67,7 +68,7 @@ class Rbm:
 				# Update error reporter:
 				error_reporter.update( epoch, training_error, validation_error, validation_samples, val_sV )
 		# Save final training visualization to image:
-		error_reporter.saveImage( 'report_' + self.name + '_training.png' )
+		error_reporter.saveImage( 'report_' + str(time.time()) + '_' + self.name + '_training.png' )
 
 	def getHiddenActivations(self, inputV):
 		return Activation.sigmoid( np.dot( inputV, self.weights ) + self.biasH )
@@ -92,9 +93,7 @@ class Rbm:
 		aH, sH = self.getHiddenSample( inputV, force_binomial )
 		aV, sV = self.getVisibleSample( sH, force_binomial )
 		return [ aH, sH, aV, sV ]
-		
+
 	@staticmethod
 	def getSample(activations):
 		return np.random.binomial( 1, activations, activations.shape )
-		
-		

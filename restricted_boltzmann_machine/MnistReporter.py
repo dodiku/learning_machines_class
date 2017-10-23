@@ -24,7 +24,7 @@ def is_jupyter_notebook():
 			return False  # Other type (?)
 	except NameError:
 		return False	  # Probably standard Python interpreter
-		
+
 class MnistSupervisedReporter:
 	def __init__(self, name, report_freq, buffer_size = 100):
 		self.name		  = name
@@ -89,7 +89,7 @@ class MnistSupervisedReporter:
 		histo_rangey  = np.arange( 11 ) / 10.0
 		# Update histogram:
 		self.histo_plot.cla()
-		self.histo_plot.set_title('Digit Validation Accuracy %')		
+		self.histo_plot.set_title('Digit Validation Accuracy %')
 		self.histo_plot.set_xticks( histo_rangex + 0.5 )
 		self.histo_plot.set_xticklabels( [ str(i) for i in histo_rangex ] )
 		self.histo_plot.set_yticks( histo_rangey )
@@ -102,7 +102,7 @@ class MnistSupervisedReporter:
 		else:
 			plt.draw()
 			plt.pause( 0.01 )
-			
+
 class MnistUnsupervisedReporter:
 	def __init__(self, name, report_freq, buffer_size = 100):
 		self.name		  = name
@@ -122,7 +122,7 @@ class MnistUnsupervisedReporter:
 		# Add subplots:
 		#self.error_plot = self.fig.add_subplot( 1, 1, 1 )
 		self.error_plot = plt.subplot( self.outer_grid[0] )
-		self.mnist_plot = gridspec.GridSpecFromSubplotSpec( 2, 10, subplot_spec=self.outer_grid[1], hspace=0.05, wspace=0.05 )	 
+		self.mnist_plot = gridspec.GridSpecFromSubplotSpec( 2, 10, subplot_spec=self.outer_grid[1], hspace=0.05, wspace=0.05 )
 		# Setup error rate subplot:
 		self.error_plot.set_xlabel( 'Epoch' )
 		self.error_plot.set_ylabel( 'Error' )
@@ -136,7 +136,7 @@ class MnistUnsupervisedReporter:
 		# Initialize MNIST images:
 		self.mnist_images = []
 		for i in range( 20 ):
-			arr = np.zeros( (28, 28) )	
+			arr = np.zeros( (28, 28) )
 			ax = self.fig.add_subplot( self.mnist_plot[i] )
 			self.mnist_images.append( ax.imshow( arr, cmap='gray', vmin=0, vmax=1, aspect='equal', animated=True ) )
 			ax.set_xticks([])
@@ -145,7 +145,7 @@ class MnistUnsupervisedReporter:
 		# Show plot:
 		if not self.is_jupyter:
 			plt.show()
-		
+
 	def saveImage(self, filepath):
 		self.fig.savefig( filepath, dpi=self.fig.dpi )
 
@@ -172,7 +172,7 @@ class MnistUnsupervisedReporter:
 		# Update MNIST images:
 		vis_idxs = np.random.choice( np.arange( validation_digits.shape[0] ), 10, replace=False )
 		vis_digits = validation_digits[ vis_idxs ]
-		vis_recons = validation_recons[ vis_idxs ]		
+		vis_recons = validation_recons[ vis_idxs ]
 		for i in range( 10 ):
 			self.mnist_images[ i	  ].set_data( vis_digits[ i, : ].reshape(28, 28) )
 			self.mnist_images[ i + 10 ].set_data( vis_recons[ i, : ].reshape(28, 28) )
