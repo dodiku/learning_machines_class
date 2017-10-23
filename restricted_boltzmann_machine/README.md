@@ -1,6 +1,6 @@
 # Multilayer Perceptron
 
-![training](images/rbm-optimized.gif)
+![training](images/rbm-optimize.gif)
 
 > Restricted Boltzmann Machine code by [@Hebali](https://github.com/Hebali) at [The Great Hyperparameter Hunt](https://github.com/Hebali/learning_machines/tree/master/hyperparameter_hunt)
 
